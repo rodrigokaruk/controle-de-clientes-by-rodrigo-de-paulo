@@ -1,4 +1,4 @@
-package controle.paciente;
+package controle.cliente;
 
 import java.awt.event.*;
 

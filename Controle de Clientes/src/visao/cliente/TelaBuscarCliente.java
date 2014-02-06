@@ -17,7 +17,7 @@ import modelagem.Cliente;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 
-import controle.paciente.ControleTelasClientes;
+import controle.cliente.ControleTelasClientes;
 
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;

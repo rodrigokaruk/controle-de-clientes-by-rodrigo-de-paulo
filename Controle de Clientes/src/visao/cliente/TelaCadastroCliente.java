@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
-import controle.paciente.ControleTelasClientes;
+import controle.cliente.ControleTelasClientes;
 import modelagem.Cliente;
 import java.awt.Color;
 import javax.swing.JTabbedPane;

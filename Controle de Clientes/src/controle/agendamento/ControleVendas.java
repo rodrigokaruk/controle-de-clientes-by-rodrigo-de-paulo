@@ -3,7 +3,7 @@ package controle.agendamento;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controle.paciente.clienteDAO;
+import controle.cliente.clienteDAO;
 
 import modelagem.Cliente;
 
