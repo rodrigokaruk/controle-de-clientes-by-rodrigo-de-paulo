@@ -1,4 +1,4 @@
-package controle.agendamento;
+package controle.vendas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,8 @@ import controle.cliente.clienteDAO;
 
 import modelagem.Cliente;
 
-import visao.agendamento.TelaVendas;
 import visao.cliente.TelaBuscarCliente;
+import visao.vendas.TelaVendas;
 
 public class ControleVendas implements ActionListener{
 	private TelaVendas tVendas;

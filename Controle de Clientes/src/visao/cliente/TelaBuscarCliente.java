@@ -22,7 +22,7 @@ import controle.cliente.ControleTelasClientes;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 
-import visao.agendamento.TelaVendas;
+import visao.vendas.TelaVendas;
 
 public class TelaBuscarCliente extends JDialog {
 

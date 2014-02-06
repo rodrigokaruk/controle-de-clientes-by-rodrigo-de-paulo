@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 
 import modelagem.Cliente;
 
-import visao.agendamento.TelaVendas;
 import visao.cliente.TelaBuscarCliente;
 import visao.cliente.TelaCadastroCliente;
+import visao.vendas.TelaVendas;
 
 public class ControleTelasClientes implements ActionListener {
 	private TelaCadastroCliente tc;

@@ -1,4 +1,4 @@
-package controle.agendamento;
+package controle.vendas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

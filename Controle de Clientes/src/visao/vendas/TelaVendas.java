@@ -1,4 +1,4 @@
-package visao.agendamento;
+package visao.vendas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -21,7 +21,8 @@ import modelagem.Venda;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 
-import controle.agendamento.ControleVendas;
+import controle.vendas.ControleVendas;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;

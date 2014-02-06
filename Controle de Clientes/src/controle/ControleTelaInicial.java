@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 
 import visao.TelaInicial;
 import visao.TelaSobre;
-import visao.agendamento.TelaVendas;
 import visao.cliente.TelaCadastroCliente;
+import visao.vendas.TelaVendas;
 
 public class ControleTelaInicial implements ActionListener{
 	private TelaInicial ti;
