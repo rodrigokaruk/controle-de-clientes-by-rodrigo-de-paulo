@@ -55,6 +55,7 @@ public class TelaCadastroCliente extends JDialog {
 	private JTextField textFieldProfissao;
 	private JLabel lblnUltimaFicha;
 	private JButton btnPegarUltimaFicha;
+	private JLabel lblCliDataEntrada;
 	
 	/**
 	 * Launch the application.
@@ -109,7 +110,7 @@ public class TelaCadastroCliente extends JDialog {
 		FlowLayout flowLayout = (FlowLayout) panelButoesCima.getLayout();
 		flowLayout.setVgap(8);
 		flowLayout.setHgap(50);
-		panelButoesCima.setBounds(0, 1, 486, 40);
+		panelButoesCima.setBounds(0, 1, 473, 40);
 		contentPanel.add(panelButoesCima);
 
 		buttonNovo = new JButton("Novo");
@@ -266,7 +267,7 @@ public class TelaCadastroCliente extends JDialog {
 		panelDados.add(lblTelefone);
 
 		textFieldTelefone = new JFormattedTextField(
-				setMascara("(##) ####-####"));
+				setMascara("(##) ####-#####"));
 		textFieldTelefone.setBounds(85, 229, 150, 20);
 		panelDados.add(textFieldTelefone);
 		textFieldTelefone.setEditable(false);
@@ -277,7 +278,7 @@ public class TelaCadastroCliente extends JDialog {
 		lblCelular.setBounds(258, 232, 74, 14);
 		panelDados.add(lblCelular);
 
-		textFieldCelular = new JFormattedTextField(setMascara("(##) ####-####"));
+		textFieldCelular = new JFormattedTextField(setMascara("(##) ####-#####"));
 		textFieldCelular.setBounds(333, 229, 165, 20);
 		panelDados.add(textFieldCelular);
 		textFieldCelular.setEditable(false);
@@ -314,28 +315,28 @@ public class TelaCadastroCliente extends JDialog {
 		lblCliDesde.setBounds(10, 274, 89, 14);
 		panelDados.add(lblCliDesde);
 
-		JLabel lblCliDataEnt = new JLabel("");
-		lblCliDataEnt.setBounds(99, 274, 127, 14);
-		panelDados.add(lblCliDataEnt);
+		lblCliDataEntrada = new JLabel("");
+		lblCliDataEntrada.setBounds(99, 274, 127, 14);
+		panelDados.add(lblCliDataEntrada);
 
 		JPanel panelCompras = new JPanel();
 		panelCompras.setLayout(null);
 		tabbedPanePaciente.addTab("Vendas", null, panelCompras, null);
 
-		JButton btnNovaVenda = new JButton("Adicionar ou remover venda ao cliente");
+		JButton btnNovaVenda = new JButton("Adicionar ou remover vendas ao cliente");
 		btnNovaVenda.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnNovaVenda.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/icons/add.jpg")));
+		btnNovaVenda.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/icons/carrinho_64x64.png")));
 		btnNovaVenda.addActionListener(controleTelaCliente);
 		btnNovaVenda.setBounds(12, 12, 799, 337);
 		btnNovaVenda.setActionCommand("Nova Venda");
 		panelCompras.add(btnNovaVenda);
 		
-		JLabel lblUltimaFichaCadastrada = new JLabel("Ultima Ficha Cadastrada: ");
-		lblUltimaFichaCadastrada.setBounds(512, 12, 148, 16);
+		JLabel lblUltimaFichaCadastrada = new JLabel("Maior numero de ficha cadastrada: ");
+		lblUltimaFichaCadastrada.setBounds(478, 12, 203, 16);
 		contentPanel.add(lblUltimaFichaCadastrada);
 		
 		lblnUltimaFicha = new JLabel("noString");
-		lblnUltimaFicha.setBounds(655, 12, 88, 16);
+		lblnUltimaFicha.setBounds(672, 12, 88, 16);
 		btnPegarUltimaFicha = new JButton();
 		btnPegarUltimaFicha.addActionListener(controleTelaCliente);
 		btnPegarUltimaFicha.setActionCommand("nUltimaFicha");
@@ -445,5 +446,8 @@ public class TelaCadastroCliente extends JDialog {
 
 	public JButton getBtnPegarUltimaFicha() {
 		return btnPegarUltimaFicha;
+	}
+	public JLabel getLblCliDataEntrada() {
+		return lblCliDataEntrada;
 	}
 }

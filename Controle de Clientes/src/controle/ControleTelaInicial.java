@@ -29,12 +29,15 @@ public class ControleTelaInicial implements ActionListener{
 			new TelaSobre().setVisible(true);
 		}
 		
-		if(evt.getSource() == ti.getBtnContPaci() || evt.getSource() == ti.getMntmCliente()){
+		if(evt.getSource() == ti.getBtnContCli() || evt.getSource() == ti.getMntmCliente()){
 			new TelaCadastroCliente().setVisible(true);
 		}
 		
 		if(evt.getSource() == ti.getBtnVendas() || evt.getSource() == ti.getMntmVendas()){
 			new TelaVendas().setVisible(true);
+		}
+		if(evt.getActionCommand().equals("Configuracoes") == true){
+			JOptionPane.showMessageDialog(null, "Ainda em desemvolvimento!");
 		}
 	}
 

@@ -6,6 +6,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import controle.DatadeHj;
+
 import modelagem.Cliente;
 
 import visao.cliente.TelaBuscarCliente;
@@ -48,7 +50,7 @@ public class ControleTelasClientes implements ActionListener {
 					btnAlualizar = null;
 				}				
 				tc.getTextFieldNdaficha().setEditable(true);
-				tc.getTextFieldNdaficha().setText("");
+				tc.getTextFieldNdaficha().setText(String.valueOf(Integer.parseInt(tc.getLblNultimaficha().getText())+1));
 				tc.getTextFieldECivil().setEditable(true);
 				tc.getTextFieldECivil().setText("");
 				tc.getTextFieldProfissao().setEditable(true);
@@ -76,6 +78,9 @@ public class ControleTelasClientes implements ActionListener {
 				tc.getRdbtnMas().setEnabled(true);
 				tc.getRdbtnFem().setEnabled(true);
 				tc.getButtonGroup().clearSelection();
+				new DatadeHj();
+				tc.getLblCliDataEntrada().setText(DatadeHj.getData().getText());
+				tc.getBtnPegarUltimaFicha().doClick();
 				aux = 1;
 			}else if(aux == 1){
 				JOptionPane.showMessageDialog(null, "Clique em desfazer primeiro!");
@@ -116,6 +121,7 @@ public class ControleTelasClientes implements ActionListener {
 				tc.getRdbtnMas().setEnabled(false);
 				tc.getRdbtnFem().setEnabled(false);
 				tc.getButtonGroup().clearSelection();
+				tc.getLblCliDataEntrada().setText("");
 				
 				aux = 0;
 				
@@ -177,7 +183,7 @@ public class ControleTelasClientes implements ActionListener {
 							tc.getTextFieldRua().getText(), tc.getTextFieldNumRua().getText(),
 							tc.getTextFieldComplemento().getText(),tc.getTextFieldCidade().getText(), s,
 							tc.getTextFieldProfissao().getText(), tc.getTextFieldECivil().getText(),
-							"");
+							tc.getLblCliDataEntrada().getText());
 					
 					CBD = new clienteDAO();
 					CBD.inserir(cli);
@@ -251,8 +257,7 @@ public class ControleTelasClientes implements ActionListener {
 						tc.getTextFieldRg().getText(), tc.getTextFieldCpf().getText(),
 						tc.getTextFieldRua().getText(), tc.getTextFieldNumRua().getText(),
 						tc.getTextFieldComplemento().getText(),tc.getTextFieldCidade().getText(), s,
-						tc.getTextFieldProfissao().getText(), tc.getTextFieldECivil().getText(),
-						"");
+						tc.getTextFieldProfissao().getText(), tc.getTextFieldECivil().getText(), null);
 			
 				CBD = new clienteDAO();
 				CBD.atualizar(cli);
@@ -267,8 +272,8 @@ public class ControleTelasClientes implements ActionListener {
 		if(tc != null && evt.getActionCommand().equals("Nova Venda") == true){
 			if(tc.getCli() != null & tc.getTextFieldNome().equals("") == false){
 				tVenda = new TelaVendas(tc.getCli());
+				tc.dispose();
 				tVenda.setVisible(true);
-				
 			}else{
 				JOptionPane.showMessageDialog(null, "Não há cliente para se adicionar vendas!");
 			}
@@ -346,6 +351,7 @@ public class ControleTelasClientes implements ActionListener {
 					tc.getTextFieldCidade().setText(cli.getCidade());
 					tc.getTextFieldTelefone().setText(cli.getTelefone());
 					tc.getTextFieldCelular().setText(cli.getCelular());
+					tc.getLblCliDataEntrada().setText(cli.getCliDesde());
 					if(cli.getSexo().equals("M") == true){
 						tc.getRdbtnMas().setSelected(true);
 					}else
@@ -377,7 +383,6 @@ public class ControleTelasClientes implements ActionListener {
 					Cliente cliVenda = tbc.getModeloTabela().getValue(tbc.getTabela().getSelectedRow());
 					tbc.gettVendas().setCliente(cliVenda);
 					tbc.gettVendas().pegaVendasNoBanco();
-					//JOptionPane.showMessageDialog(null, tbc.gettVendas().getCliente().getId());
 					tbc.dispose();
 				}
 			}catch(Exception e){

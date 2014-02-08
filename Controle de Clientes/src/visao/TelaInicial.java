@@ -34,7 +34,7 @@ public class TelaInicial extends JFrame {
 	private JMenuItem mntmSair;
 	private JButton btnSair;
 	private JButton btnVendas;
-	private JButton btnContPaci;
+	private JButton btnContCli;
 	private JMenu mnAjuda;
 	private JButton btnConfiguracoes;
 	private JMenu mnControle;
@@ -123,15 +123,17 @@ public class TelaInicial extends JFrame {
 		
 		panel.setLayout(null);
 		
-		btnContPaci = new JButton("Clientes");
-		btnContPaci.addActionListener(controleTelaInicial);
-		btnContPaci.setBackground(Color.LIGHT_GRAY);
-		btnContPaci.setToolTipText("Cadastrar ou atualizar clientes");
-		btnContPaci.setIcon(new ImageIcon(TelaInicial.class.getResource("/icons/10693_64x64.png")));
-		btnContPaci.setBounds(30, 129, 150, 60);
-		panel.add(btnContPaci);
+		btnContCli = new JButton("Clientes");
+		btnContCli.setActionCommand("Clientes");
+		btnContCli.addActionListener(controleTelaInicial);
+		btnContCli.setBackground(Color.LIGHT_GRAY);
+		btnContCli.setToolTipText("Cadastrar ou atualizar clientes");
+		btnContCli.setIcon(new ImageIcon(TelaInicial.class.getResource("/icons/10693_64x64.png")));
+		btnContCli.setBounds(30, 129, 150, 60);
+		panel.add(btnContCli);
 		
 		btnVendas = new JButton("Vendas");
+		btnVendas.setActionCommand("Vendas");
 		btnVendas.setIcon(new ImageIcon(TelaInicial.class.getResource("/icons/carrinho_64x64.png")));
 		btnVendas.addActionListener(controleTelaInicial);
 		btnVendas.setBackground(Color.LIGHT_GRAY);
@@ -149,6 +151,7 @@ public class TelaInicial extends JFrame {
 		panel.add(btnConfiguracoes);
 		
 		btnSair = new JButton("Sair");
+		btnSair.setActionCommand("Sair");
 		btnSair.setBackground(Color.LIGHT_GRAY);
 		btnSair.addActionListener(controleTelaInicial);
 		btnSair.setToolTipText("Sair");
@@ -220,8 +223,8 @@ public class TelaInicial extends JFrame {
 	public JButton getBtnVendas() {
 		return btnVendas;
 	}
-	public JButton getBtnContPaci() {
-		return btnContPaci;
+	public JButton getBtnContCli() {
+		return btnContCli;
 	}
 	public JMenu getMnAjuda() {
 		return mnAjuda;

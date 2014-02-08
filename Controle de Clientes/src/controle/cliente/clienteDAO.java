@@ -175,8 +175,8 @@ public class clienteDAO {
 				
 		String sql = "update cont_de_clientes."
 				+ "cliente set (nficha, nome, nascimento, rg, cpf, telefone," 
-				+" celular, rua, numrua, complemento, cidade, sexo, profissao, ecivil, clidesde)"
-				+ " = (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) where id = ?;";
+				+" celular, rua, numrua, complemento, cidade, sexo, profissao, ecivil)"
+				+ " = (?,?,?,?,?,?,?,?,?,?,?,?,?,?) where id = ?;";
 		
 		Connection connection = conexao.getInstace().getConnection();
 		PreparedStatement statement = null;
@@ -213,8 +213,7 @@ public class clienteDAO {
 			statement.setString(12, cliente.getSexo());
 			statement.setString(13, cliente.getProfissao());
 			statement.setString(14, cliente.geteCivil());
-			statement.setString(15, cliente.getCliDesde());
-			statement.setInt(16, cliente.getId());
+			statement.setInt(15, cliente.getId());
 			statement.executeUpdate();
 			statement.execute();
 			

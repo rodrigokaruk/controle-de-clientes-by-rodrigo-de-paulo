@@ -54,7 +54,7 @@ public class vendaDAO {
 	}
 	
 	
-	public List<Venda> buscarVenda(Cliente cliente){
+	public List<Venda> buscarVenda(int id_cliente){
 		String sql;
 		Venda venda;
 		List<Venda> lista = new ArrayList<Venda>();
@@ -69,7 +69,7 @@ public class vendaDAO {
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setInt(1, cliente.getId());
+			statement.setInt(1, id_cliente);
 			statement.execute();
 			
 			ResultSet set = statement.getResultSet();

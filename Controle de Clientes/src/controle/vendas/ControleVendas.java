@@ -46,7 +46,6 @@ public class ControleVendas implements ActionListener{
 					tVendas.getTxtData().getText()), tVendas.getCliente());
 				tVendas.getBtnPegarVendasNoBanco().doClick();
 				
-				tVendas.getTxtData().setText("");
 				tVendas.getTxtDescricao().setText("");
 				tVendas.getTxtProduto().setText("");
 				tVendas.getTxtValor().setText("");
@@ -56,15 +55,29 @@ public class ControleVendas implements ActionListener{
 		}
 		
 		if(tVendas.getCliente().getNome() != null  && evt.getActionCommand().equals("Remover") == true){
-			
+			Venda venda = tVendas.getModeloTabela().getValue(tVendas.getTabelaVendas().getSelectedRow());
+			VBD = new vendaDAO();
+			VBD.removerVenda(venda);
+			tVendas.getBtnPegarVendasNoBanco().doClick();
 		}
 		
 		if(evt.getActionCommand().equals("PegarVendasNoBanco") == true){
 				VBD = new vendaDAO();
 				tVendas.getModeloTabela().clear();
-				tVendas.getModeloTabela().addAll(VBD.buscarVenda(tVendas.getCliente()));
+				tVendas.getModeloTabela().addAll(VBD.buscarVenda(tVendas.getCliente().getId()));
+				tVendas.getLblValorTotalComprado().setText(String.valueOf(CalcularTotalComprado()));
 				tVendas.repaint();
 		}
+	}
+	
+	private double CalcularTotalComprado(){
+		double total = 0;
+		
+		for(int i = 0; i < tVendas.getModeloTabela().getData().size(); i++){
+			total += tVendas.getModeloTabela().getData().get(i).getValor();
+		}
+		
+		return total;
 	}
 
 }

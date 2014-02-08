@@ -9,6 +9,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.MaskFormatter;
@@ -21,6 +22,7 @@ import modelagem.Venda;
 import com.towel.el.annotation.AnnotationResolver;
 import com.towel.swing.table.ObjectTableModel;
 
+import controle.DatadeHj;
 import controle.vendas.ControleVendas;
 
 import javax.swing.JLabel;
@@ -34,7 +36,7 @@ public class TelaVendas extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private AnnotationResolver aR;
 	private ObjectTableModel<Venda> modeloTabela;
-	private	JTable TabelaAgenda;
+	private	JTable TabelaVendas;
 	private final JPanel PainelPrincipal = new JPanel();
 	private ControleVendas controleVenda;
 	private JTextField txtNome;
@@ -45,6 +47,7 @@ public class TelaVendas extends JDialog {
 	private JButton btnBuscar;
 	private Cliente cliente;
 	private JButton btnPegarVendasNoBanco;
+	private JLabel lblTotal;
 
 	/**
 	 * Launch the application.
@@ -73,7 +76,7 @@ public class TelaVendas extends JDialog {
 	}
 	
 	public TelaVendas(Cliente cliente) {
-		setBounds(100, 100, 770, 480);
+		setBounds(100, 100, 770, 500);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(PainelPrincipal, BorderLayout.CENTER);
 		setTitle("Vendas");
@@ -91,15 +94,20 @@ public class TelaVendas extends JDialog {
 		aR = new AnnotationResolver(Venda.class);
 		modeloTabela = new ObjectTableModel<Venda>(aR, "data,nomeProd,valor,descricao");
 		
-		TabelaAgenda = new JTable(modeloTabela);
-		TabelaAgenda.getColumnModel().getColumn(0).setPreferredWidth(100);
-		TabelaAgenda.getColumnModel().getColumn(1).setPreferredWidth(200);
-		TabelaAgenda.getColumnModel().getColumn(1).setResizable(false);
-		TabelaAgenda.getColumnModel().getColumn(3).setPreferredWidth(400);
-		TabelaAgenda.getColumnModel().getColumn(3).setResizable(false);
+		TabelaVendas = new JTable(modeloTabela);
+		TabelaVendas.getColumnModel().getColumn(0).setPreferredWidth(100);
+		TabelaVendas.getColumnModel().getColumn(1).setPreferredWidth(200);
+		TabelaVendas.getColumnModel().getColumn(1).setResizable(false);
+		TabelaVendas.getColumnModel().getColumn(3).setPreferredWidth(400);
+		TabelaVendas.getColumnModel().getColumn(3).setResizable(false);
+		//isso tudo eh so para colocar a coluna valor para a esquerda na JTable da TelaVendas {
+		DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+		cellRenderer.setHorizontalAlignment(JLabel.LEFT);
+		TabelaVendas.getColumnModel().getColumn(2).setCellRenderer(cellRenderer);
+		//  }
 		PainelPrincipal.setLayout(null);
 		
-		JScrollPane PainelScroll = new JScrollPane(TabelaAgenda);
+		JScrollPane PainelScroll = new JScrollPane(TabelaVendas);
 		PainelScroll.setBounds(5, 126, 754, 314);
 		PainelPrincipal.add(PainelScroll);
 		
@@ -136,6 +144,8 @@ public class TelaVendas extends JDialog {
 		
 		txtData = new JFormattedTextField(setMascara("##/##/####"));
 		txtData.setBounds(457, 38, 114, 20);
+		new DatadeHj();
+		txtData.setText(DatadeHj.getData().getText());
 		PainelPrincipal.add(txtData);
 		txtData.setColumns(10);
 		
@@ -187,6 +197,14 @@ public class TelaVendas extends JDialog {
 				btnRemover.addActionListener(controleVenda);
 				PainelBotoes.add(BtnSair);
 			}
+			
+			JLabel lblTotalComprado = new JLabel(" Total Comprado: ");
+			lblTotalComprado.setBounds(5, 444, 105, 16);
+			PainelPrincipal.add(lblTotalComprado);
+			
+			lblTotal = new JLabel("");
+			lblTotal.setBounds(109, 444, 55, 16);
+			PainelPrincipal.add(lblTotal);
 			{
 				btnPegarVendasNoBanco = new JButton();
 				btnPegarVendasNoBanco.setActionCommand("PegarVendasNoBanco");
@@ -221,8 +239,8 @@ public class TelaVendas extends JDialog {
 	}
 
 
-	public JTable getTabelaAgenda() {
-		return TabelaAgenda;
+	public JTable getTabelaVendas() {
+		return TabelaVendas;
 	}
 
 
@@ -261,6 +279,9 @@ public class TelaVendas extends JDialog {
 
 	public JButton getBtnPegarVendasNoBanco() {
 		return btnPegarVendasNoBanco;
+	}
+	public JLabel getLblValorTotalComprado() {
+		return lblTotal;
 	}
 }
 
