@@ -25,15 +25,19 @@ public class ControleTelasClientes implements ActionListener {
 	
 	
 	public ControleTelasClientes(TelaCadastroCliente tc) {
-		this.tc = tc;
-		tc.getBtnSalvar();
+		if(tc != null){
+			this.tc = tc;
+			tc.getBtnSalvar();
+		}
+		else
+			tc = null;
 	}
 
 	
 	public void actionPerformed(ActionEvent evt) {
 		//----------------------------------------------------------------------------
 		//Cadastrar novo cliente
-		if(evt.getSource() == tc.getBtnNovo()){
+		if(tc != null && evt.getSource() == tc.getBtnNovo()){
 			
 			if(aux == 0 || aux == 2){
 				cli = null;
@@ -80,7 +84,7 @@ public class ControleTelasClientes implements ActionListener {
 		
 		//-----------------------------------------------------------------------------------
 		//desfazer caso tenha um cliente sendo cadastrado
-		if(evt.getSource() == tc.getBtnDesfazer()){
+		if(tc != null && evt.getSource() == tc.getBtnDesfazer()){
 			
 			if(aux == 1 || aux == 2){
 				tc.getTextFieldNdaficha().setEditable(false);
@@ -125,7 +129,7 @@ public class ControleTelasClientes implements ActionListener {
 			}
 		}
 		//-----------------------------------------------------------------------------------
-		if(evt.getSource() == tc.getBtnFechar()){
+		if(tc != null && evt.getSource() == tc.getBtnFechar()){
 			//fecha a tela e aqui o aux auxilia na confirmacao se estiver um cliente sendo cadastrado
 			if(aux == 0 || aux == 2){
 				tc.dispose();
@@ -141,7 +145,7 @@ public class ControleTelasClientes implements ActionListener {
 		
 		//-----------------------------------------------------------------------------------
 		//pega os campos da tela e adiciona a classe cliente para salva-la no banco atravez do clienteDAO
-		if(evt.getSource() == tc.getBtnSalvar()){
+		if(tc != null && evt.getSource() == tc.getBtnSalvar()){
 			//verificacao de campos obrigatorios
 			if(aux == 1){
 				String msg = "Os seguintes campos faltam ser preenchidos:\n";
@@ -206,19 +210,19 @@ public class ControleTelasClientes implements ActionListener {
 					JOptionPane.showMessageDialog(null, msg);
 				
 			}else
-				JOptionPane.showMessageDialog(null, "Não há um novo paciente para ser salvo!");
+				JOptionPane.showMessageDialog(null, "Não há um novo cliente para ser salvo!");
 		}
 		
 		//-----------------------------------------------------------------------------------
-		//abrir tela de busca de cliente
-		if(evt.getSource() == tc.getBtnPesquisar()){
+		//abrir tela de busca de cliente para a TelaCadastroCliente
+		if(tc != null && evt.getSource() == tc.getBtnPesquisar()){
 			
 			tbc = new TelaBuscarCliente(this,"Novo");
 			tbc.setVisible(true);
 		}
 		//----------------------------------------------------------------------------
 		//este botao so aparecera se na tela de busca de clientes for selecionado algum cliente
-		if(btnAlualizar != null && evt.getSource() == btnAlualizar){
+		if(tc != null && btnAlualizar != null && evt.getSource() == btnAlualizar){
 			//atualizar dados de um cliente ja cadastrado
 			String msg = "Os seguintes campos faltam ser preenchidos:\n";
 			if(tc.getTextFieldNome().getText().equalsIgnoreCase("") == true){
@@ -260,10 +264,9 @@ public class ControleTelasClientes implements ActionListener {
 		}
 		//------------------------------------------------------------
 		//Abre a telaVendas e envia o cliente da tela de Clientes para a mesma adicinar novas vendas
-		if(evt.getActionCommand().equals("Nova Venda") == true){
+		if(tc != null && evt.getActionCommand().equals("Nova Venda") == true){
 			if(tc.getCli() != null & tc.getTextFieldNome().equals("") == false){
 				tVenda = new TelaVendas(tc.getCli());
-				tVenda.remove(tVenda.getBtnBuscar());
 				tVenda.setVisible(true);
 				
 			}else{
@@ -272,7 +275,7 @@ public class ControleTelasClientes implements ActionListener {
 		}
 		//
 		//Pega o numero da ultima ficha cadastrada
-		if(evt.getActionCommand().equals("nUltimaFicha" ) == true){
+		if(tc != null && evt.getActionCommand().equals("nUltimaFicha" ) == true){
 			CBD = new clienteDAO();
 			tc.getLblNultimaficha().setText(""+CBD.nUltimaFicha());
 		}
@@ -293,7 +296,7 @@ public class ControleTelasClientes implements ActionListener {
 		
 		//-----------------------------------------------------------------------------------
 		//seleciona um cliente na tela de busca de clientes e preenche os campos da telaCadastroCliente
-		if(tbc != null && evt.getSource() == tbc.getButtonSelecionar() && tbc.getTipoDeTela().equals("Novo") == true){
+		if(tc != null && tbc != null && evt.getSource() == tbc.getButtonSelecionar() && tbc.getTipoDeTela().equals("Novo") == true){
 			
 			try{
 				if(tbc.getTabela().getSelectedColumn() != -1){
@@ -362,7 +365,7 @@ public class ControleTelasClientes implements ActionListener {
 					}
 				}
 			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "Selecione um paciente!");
+				JOptionPane.showMessageDialog(null, "Selecione um cliente!");
 			}
 		}
 		//------------------------------------------------------------
@@ -373,11 +376,12 @@ public class ControleTelasClientes implements ActionListener {
 				if(tbc.getTabela().getSelectedColumn() != -1){
 					Cliente cliVenda = tbc.getModeloTabela().getValue(tbc.getTabela().getSelectedRow());
 					tbc.gettVendas().setCliente(cliVenda);
-					tbc.gettVendas().repaint();
+					tbc.gettVendas().pegaVendasNoBanco();
+					//JOptionPane.showMessageDialog(null, tbc.gettVendas().getCliente().getId());
 					tbc.dispose();
 				}
 			}catch(Exception e){
-				JOptionPane.showMessageDialog(null, "Selecione um paciente!");
+				JOptionPane.showMessageDialog(null, "Selecione um cliente!");
 			}
 		}
 	}

@@ -132,10 +132,10 @@ public class TelaInicial extends JFrame {
 		panel.add(btnContPaci);
 		
 		btnVendas = new JButton("Vendas");
+		btnVendas.setIcon(new ImageIcon(TelaInicial.class.getResource("/icons/carrinho_64x64.png")));
 		btnVendas.addActionListener(controleTelaInicial);
 		btnVendas.setBackground(Color.LIGHT_GRAY);
 		btnVendas.setToolTipText("Consultar vendas");
-		btnVendas.setIcon(null);
 		btnVendas.setBounds(210, 129, 150, 60);
 		panel.add(btnVendas);
 		
@@ -144,7 +144,7 @@ public class TelaInicial extends JFrame {
 		btnConfiguracoes.addActionListener(controleTelaInicial);
 		btnConfiguracoes.setBackground(Color.LIGHT_GRAY);
 		btnConfiguracoes.setToolTipText("Acessar banco apartir da aplica\u00E7\u00E3o");
-		btnConfiguracoes.setIcon(null);
+		btnConfiguracoes.setIcon(new ImageIcon(TelaInicial.class.getResource("/icons/config_64x64.png")));
 		btnConfiguracoes.setBounds(390, 129, 170, 60);
 		panel.add(btnConfiguracoes);
 		

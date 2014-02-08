@@ -8,7 +8,7 @@ public class Venda {
 	@Resolvable(colName = "Produto")
 	private String nomeProd;
 	@Resolvable(colName = "Valor")
-	private String valor;
+	private double valor;
 	@Resolvable(colName = "Descrição")
 	private String descricao;
 	@Resolvable(colName = "Data")
@@ -21,7 +21,7 @@ public class Venda {
 	
 	
 	
-	public Venda(int id, int id_cliente, String nome, String valor,
+	public Venda(int id, int id_cliente, String nome, double valor,
 			String descricao, String data) {
 		super();
 		this.id = id;
@@ -51,7 +51,7 @@ public class Venda {
 		return nomeProd;
 	}
 
-	public String getValor() {
+	public double getValor() {
 		return valor;
 	}
 

@@ -47,6 +47,11 @@ public class TelaBuscarCliente extends JDialog {
 			String tipoDeTela) {
 		super();
 		this.tipoDeTela = tipoDeTela;
+		//verifica se a telaVendas foi aberta atraves da TelaCadastroCliente ou pela TelaInicial
+		if(contTelaCli == null){
+			contTelaCli = new ControleTelasClientes(null);
+			contTelaCli.setTbc(this);
+		}
 
 		setResizable(false);
 		setTitle("Buscar");

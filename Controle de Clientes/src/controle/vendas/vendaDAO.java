@@ -23,8 +23,8 @@ public class vendaDAO {
 	public long inserir(Venda venda, Cliente cliente) {
 		long id = -1;
 		String sql = "insert into cont_de_clientes."
-				+ "venda(id_cliente ,produto, data,	valor, descricao"
-				+ "values(?,?,?,?,?)";
+				+ "venda(id_cliente ,produto, data,	valor, descricao)"
+				+ " values(?,?,?,?,?)";
 		
 		Connection connection = conexao.getInstace().getConnection();
 		PreparedStatement statement = null;
@@ -35,7 +35,7 @@ public class vendaDAO {
 			statement.setInt(1, cliente.getId());
 			statement.setString(2, venda.getNomeProd());
 			statement.setString(3, venda.getData());
-			statement.setString(4, venda.getValor());
+			statement.setDouble(4, venda.getValor());
 			statement.setString(5, venda.getDescricao());
 			statement.executeUpdate();
 			ResultSet set = statement.getGeneratedKeys();
@@ -76,7 +76,7 @@ public class vendaDAO {
 			while (set.next()) {
 				
 				venda = new Venda(set.getInt("id"),set.getInt("id_cliente"), set.getString("produto"),
-						set.getString("valor"), set.getString("descricao"), set.getString("data"));
+						set.getDouble("valor"), set.getString("descricao"), set.getString("data"));
 				
 				lista.add(venda);
 			}

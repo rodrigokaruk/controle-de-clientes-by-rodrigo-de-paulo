@@ -1,10 +1,10 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.1.2
--- Dumped by pg_dump version 9.1.2
--- Started on 2014-02-06 16:58:05
+-- Dumped from database version 9.2.1
+-- Dumped by pg_dump version 9.2.1
+-- Started on 2014-02-07 20:31:04
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -13,7 +13,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 6 (class 2615 OID 49269)
+-- TOC entry 6 (class 2615 OID 24753)
 -- Name: cont_de_clientes; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -23,7 +23,7 @@ CREATE SCHEMA cont_de_clientes;
 ALTER SCHEMA cont_de_clientes OWNER TO postgres;
 
 --
--- TOC entry 165 (class 3079 OID 11639)
+-- TOC entry 172 (class 3079 OID 11727)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -31,8 +31,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 1875 (class 0 OID 0)
--- Dependencies: 165
+-- TOC entry 1944 (class 0 OID 0)
+-- Dependencies: 172
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -46,8 +46,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 162 (class 1259 OID 49272)
--- Dependencies: 1856 6
+-- TOC entry 168 (class 1259 OID 24754)
 -- Name: cliente; Type: TABLE; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -74,8 +73,7 @@ CREATE TABLE cliente (
 ALTER TABLE cont_de_clientes.cliente OWNER TO postgres;
 
 --
--- TOC entry 161 (class 1259 OID 49270)
--- Dependencies: 162 6
+-- TOC entry 169 (class 1259 OID 24758)
 -- Name: cliente_id_seq; Type: SEQUENCE; Schema: cont_de_clientes; Owner: postgres
 --
 
@@ -90,8 +88,8 @@ CREATE SEQUENCE cliente_id_seq
 ALTER TABLE cont_de_clientes.cliente_id_seq OWNER TO postgres;
 
 --
--- TOC entry 1876 (class 0 OID 0)
--- Dependencies: 161
+-- TOC entry 1945 (class 0 OID 0)
+-- Dependencies: 169
 -- Name: cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: cont_de_clientes; Owner: postgres
 --
 
@@ -99,17 +97,16 @@ ALTER SEQUENCE cliente_id_seq OWNED BY cliente.id;
 
 
 --
--- TOC entry 1877 (class 0 OID 0)
--- Dependencies: 161
+-- TOC entry 1946 (class 0 OID 0)
+-- Dependencies: 169
 -- Name: cliente_id_seq; Type: SEQUENCE SET; Schema: cont_de_clientes; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cliente_id_seq', 6, true);
+SELECT pg_catalog.setval('cliente_id_seq', 2, true);
 
 
 --
--- TOC entry 164 (class 1259 OID 49299)
--- Dependencies: 1858 6
+-- TOC entry 170 (class 1259 OID 24760)
 -- Name: venda; Type: TABLE; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -118,16 +115,15 @@ CREATE TABLE venda (
     id_cliente integer NOT NULL,
     produto character varying NOT NULL,
     data character varying,
-    valor character varying DEFAULT '0,00'::character varying,
-    descricao character varying
+    descricao character varying,
+    valor double precision
 );
 
 
 ALTER TABLE cont_de_clientes.venda OWNER TO postgres;
 
 --
--- TOC entry 163 (class 1259 OID 49297)
--- Dependencies: 164 6
+-- TOC entry 171 (class 1259 OID 24767)
 -- Name: venda_id_seq; Type: SEQUENCE; Schema: cont_de_clientes; Owner: postgres
 --
 
@@ -142,8 +138,8 @@ CREATE SEQUENCE venda_id_seq
 ALTER TABLE cont_de_clientes.venda_id_seq OWNER TO postgres;
 
 --
--- TOC entry 1878 (class 0 OID 0)
--- Dependencies: 163
+-- TOC entry 1947 (class 0 OID 0)
+-- Dependencies: 171
 -- Name: venda_id_seq; Type: SEQUENCE OWNED BY; Schema: cont_de_clientes; Owner: postgres
 --
 
@@ -151,35 +147,32 @@ ALTER SEQUENCE venda_id_seq OWNED BY venda.id;
 
 
 --
--- TOC entry 1879 (class 0 OID 0)
--- Dependencies: 163
+-- TOC entry 1948 (class 0 OID 0)
+-- Dependencies: 171
 -- Name: venda_id_seq; Type: SEQUENCE SET; Schema: cont_de_clientes; Owner: postgres
 --
 
-SELECT pg_catalog.setval('venda_id_seq', 6, true);
+SELECT pg_catalog.setval('venda_id_seq', 1, false);
 
 
 --
--- TOC entry 1855 (class 2604 OID 49275)
--- Dependencies: 162 161 162
+-- TOC entry 1924 (class 2604 OID 24769)
 -- Name: id; Type: DEFAULT; Schema: cont_de_clientes; Owner: postgres
 --
 
-ALTER TABLE cliente ALTER COLUMN id SET DEFAULT nextval('cliente_id_seq'::regclass);
+ALTER TABLE ONLY cliente ALTER COLUMN id SET DEFAULT nextval('cliente_id_seq'::regclass);
 
 
 --
--- TOC entry 1857 (class 2604 OID 49302)
--- Dependencies: 163 164 164
+-- TOC entry 1925 (class 2604 OID 24770)
 -- Name: id; Type: DEFAULT; Schema: cont_de_clientes; Owner: postgres
 --
 
-ALTER TABLE venda ALTER COLUMN id SET DEFAULT nextval('venda_id_seq'::regclass);
+ALTER TABLE ONLY venda ALTER COLUMN id SET DEFAULT nextval('venda_id_seq'::regclass);
 
 
 --
--- TOC entry 1860 (class 2606 OID 49280)
--- Dependencies: 162 162
+-- TOC entry 1927 (class 2606 OID 24772)
 -- Name: paciente_cpf_key; Type: CONSTRAINT; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -188,8 +181,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 1862 (class 2606 OID 49282)
--- Dependencies: 162 162
+-- TOC entry 1929 (class 2606 OID 24774)
 -- Name: paciente_nome_key; Type: CONSTRAINT; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -198,8 +190,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 1864 (class 2606 OID 49278)
--- Dependencies: 162 162
+-- TOC entry 1931 (class 2606 OID 24776)
 -- Name: paciente_pkey; Type: CONSTRAINT; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -208,8 +199,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 1866 (class 2606 OID 49284)
--- Dependencies: 162 162
+-- TOC entry 1933 (class 2606 OID 24778)
 -- Name: paciente_rg_key; Type: CONSTRAINT; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -218,8 +208,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 1868 (class 2606 OID 49308)
--- Dependencies: 164 164
+-- TOC entry 1935 (class 2606 OID 24780)
 -- Name: venda_pkey; Type: CONSTRAINT; Schema: cont_de_clientes; Owner: postgres; Tablespace: 
 --
 
@@ -228,8 +217,7 @@ ALTER TABLE ONLY venda
 
 
 --
--- TOC entry 1869 (class 2606 OID 49309)
--- Dependencies: 1863 164 162
+-- TOC entry 1936 (class 2606 OID 24786)
 -- Name: venda_id_cliente_fkey; Type: FK CONSTRAINT; Schema: cont_de_clientes; Owner: postgres
 --
 
@@ -237,7 +225,11 @@ ALTER TABLE ONLY venda
     ADD CONSTRAINT venda_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES cliente(id);
 
 
--- Completed on 2014-02-06 16:58:07
+ALTER SEQUENCE cliente_id_seq RESTART WITH 1;
+ALTER SEQUENCE venda_id_seq RESTART WITH 1;
+
+
+-- Completed on 2014-02-07 20:31:04
 
 --
 -- PostgreSQL database dump complete

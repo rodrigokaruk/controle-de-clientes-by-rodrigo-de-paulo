@@ -44,6 +44,7 @@ public class TelaVendas extends JDialog {
 	private JFormattedTextField txtData;
 	private JButton btnBuscar;
 	private Cliente cliente;
+	private JButton btnPegarVendasNoBanco;
 
 	/**
 	 * Launch the application.
@@ -75,6 +76,7 @@ public class TelaVendas extends JDialog {
 		setBounds(100, 100, 770, 480);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(PainelPrincipal, BorderLayout.CENTER);
+		setTitle("Vendas");
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setModal(true);
@@ -84,7 +86,7 @@ public class TelaVendas extends JDialog {
 		if(this.cliente == null)
 			this.cliente = new Cliente();
 		
-		controleVenda = new ControleVendas(this, this.cliente);
+		controleVenda = new ControleVendas(this);
 		
 		aR = new AnnotationResolver(Venda.class);
 		modeloTabela = new ObjectTableModel<Venda>(aR, "data,nomeProd,valor,descricao");
@@ -185,16 +187,21 @@ public class TelaVendas extends JDialog {
 				btnRemover.addActionListener(controleVenda);
 				PainelBotoes.add(BtnSair);
 			}
+			{
+				btnPegarVendasNoBanco = new JButton();
+				btnPegarVendasNoBanco.setActionCommand("PegarVendasNoBanco");
+				btnPegarVendasNoBanco.addActionListener(controleVenda);
+			}
+			pegaVendasNoBanco();
 		}
+		//se cliente nao for nulo entao ele veio da TelaCadastroCliente entao ele preence os campos referentes a esse cliente recebido.
 		
-		if(this.cliente != null & this.cliente.getNome() != null){
+	}
+	
+	public void pegaVendasNoBanco(){
+		if(this.cliente != null){
 			txtNome.setText(cliente.getNome());
-			JButton btnPegarVendasNoBanco = new JButton();
-			btnPegarVendasNoBanco.setActionCommand("PegarVendasNoBanco");
-			btnPegarVendasNoBanco.addActionListener(controleVenda);
 			btnPegarVendasNoBanco.doClick();
-			
-//			JOptionPane.showMessageDialog(null, cliente.getId());
 		}
 	}
 
@@ -249,6 +256,11 @@ public class TelaVendas extends JDialog {
 	}
 	public JButton getBtnBuscar() {
 		return btnBuscar;
+	}
+
+
+	public JButton getBtnPegarVendasNoBanco() {
+		return btnPegarVendasNoBanco;
 	}
 }
 

@@ -230,7 +230,7 @@ public class clienteDAO {
 		String sql;
 		
 		sql = "select * from cont_de_clientes."
-				+ "cliente order by id;";
+				+ "cliente order by nficha;";
 	
 	
 		Connection connection = conexao.getInstace().getConnection();
@@ -241,7 +241,7 @@ public class clienteDAO {
 			
 			ResultSet set = statement.getResultSet();
 			while (set.next()) {
-				nFicha = set.getInt("id");
+				nFicha = set.getInt("nficha");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

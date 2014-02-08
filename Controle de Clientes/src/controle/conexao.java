@@ -15,7 +15,7 @@ public class conexao {
 		try{
 			return DriverManager.getConnection("jdbc:postgresql:" +
 					"//localhost:5432/ContClientBD/cont_de_clientes",
-					"postgres","123456");
+					"postgres","admin");
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
