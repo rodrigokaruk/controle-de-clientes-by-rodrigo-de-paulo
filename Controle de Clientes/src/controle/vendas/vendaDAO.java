@@ -101,7 +101,6 @@ public class vendaDAO {
 			statement.executeUpdate();
 			statement.execute();
 			
-			JOptionPane.showMessageDialog(null, "Removido com sucesso!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage()+"\nErro de Banco de dados!");

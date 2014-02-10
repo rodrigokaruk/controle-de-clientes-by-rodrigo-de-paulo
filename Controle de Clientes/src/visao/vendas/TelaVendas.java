@@ -96,9 +96,9 @@ public class TelaVendas extends JDialog {
 		
 		TabelaVendas = new JTable(modeloTabela);
 		TabelaVendas.getColumnModel().getColumn(0).setPreferredWidth(100);
-		TabelaVendas.getColumnModel().getColumn(1).setPreferredWidth(200);
+		TabelaVendas.getColumnModel().getColumn(1).setPreferredWidth(250);
 		TabelaVendas.getColumnModel().getColumn(1).setResizable(false);
-		TabelaVendas.getColumnModel().getColumn(3).setPreferredWidth(400);
+		TabelaVendas.getColumnModel().getColumn(3).setPreferredWidth(350);
 		TabelaVendas.getColumnModel().getColumn(3).setResizable(false);
 		//isso tudo eh so para colocar a coluna valor para a esquerda na JTable da TelaVendas {
 		DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
@@ -203,7 +203,7 @@ public class TelaVendas extends JDialog {
 			PainelPrincipal.add(lblTotalComprado);
 			
 			lblTotal = new JLabel("");
-			lblTotal.setBounds(109, 444, 55, 16);
+			lblTotal.setBounds(109, 444, 291, 16);
 			PainelPrincipal.add(lblTotal);
 			{
 				btnPegarVendasNoBanco = new JButton();

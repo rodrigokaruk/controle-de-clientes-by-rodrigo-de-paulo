@@ -7,7 +7,7 @@ public class Venda {
 	private int id_cliente;
 	@Resolvable(colName = "Produto")
 	private String nomeProd;
-	@Resolvable(colName = "Valor")
+	@Resolvable(colName = "Valor R$")
 	private double valor;
 	@Resolvable(colName = "Descrição")
 	private String descricao;

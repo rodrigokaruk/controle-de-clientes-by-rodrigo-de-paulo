@@ -384,6 +384,7 @@ public class ControleTelasClientes implements ActionListener {
 					tbc.gettVendas().setCliente(cliVenda);
 					tbc.gettVendas().pegaVendasNoBanco();
 					tbc.dispose();
+					tbc.gettVendas().getTxtProduto().grabFocus();
 				}
 			}catch(Exception e){
 				JOptionPane.showMessageDialog(null, "Selecione um cliente!");
