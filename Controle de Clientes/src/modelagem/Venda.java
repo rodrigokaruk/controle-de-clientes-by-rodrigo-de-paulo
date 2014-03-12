@@ -13,6 +13,8 @@ public class Venda {
 	private String descricao;
 	@Resolvable(colName = "Data")
 	private String data;
+	@Resolvable(colName = "Status")
+	private String status;
 	
 
 	public Venda() {
@@ -22,7 +24,7 @@ public class Venda {
 	
 	
 	public Venda(int id, int id_cliente, String nome, double valor,
-			String descricao, String data) {
+			String descricao, String data, int statusINT) {
 		super();
 		this.id = id;
 		this.id_cliente = id_cliente;
@@ -30,7 +32,11 @@ public class Venda {
 		this.valor = valor;
 		this.descricao = descricao;
 		this.data = data;
-	}
+		if(statusINT == 1)
+			this.status = "Não pago";
+		else
+			this.status = "Pago";
+		}
 	
 	
 	public int getId() {

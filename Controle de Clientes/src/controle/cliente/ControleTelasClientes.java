@@ -168,9 +168,6 @@ public class ControleTelasClientes implements ActionListener {
 				if(tc.getTextFieldDataDeNasc().getText().equals("  /  /    ")){
 					msg += "Data de Nascimento\n";
 				}
-				if(tc.getTextFieldTelefone().getText().equals("(  )     -    ")){
-					msg += "Telefone\n";
-				}
 				if(msg.equals("Os seguintes campos faltam ser preenchidos:\n")){
 					String s = "";
 					if(tc.getRdbtnMas().isSelected() == true)
@@ -242,9 +239,6 @@ public class ControleTelasClientes implements ActionListener {
 			}
 			if(tc.getTextFieldDataDeNasc().getText().equals("  /  /    ")){
 				msg += "Data de Nascimento\n";
-			}
-			if(tc.getTextFieldTelefone().getText().equals("(  )     -    ")){
-				msg += "Telefone\n";
 			}
 			if(msg.equals("Os seguintes campos faltam ser preenchidos:\n")){
 				String s = "";

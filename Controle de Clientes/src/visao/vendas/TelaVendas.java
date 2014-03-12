@@ -210,7 +210,8 @@ public class TelaVendas extends JDialog {
 				btnPegarVendasNoBanco.setActionCommand("PegarVendasNoBanco");
 				btnPegarVendasNoBanco.addActionListener(controleVenda);
 			}
-			pegaVendasNoBanco();
+			if(cliente != null)
+				pegaVendasNoBanco();
 		}
 		//se cliente nao for nulo entao ele veio da TelaCadastroCliente entao ele preence os campos referentes a esse cliente recebido.
 		

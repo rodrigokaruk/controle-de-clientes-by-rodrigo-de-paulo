@@ -262,7 +262,7 @@ public class TelaCadastroCliente extends JDialog {
 		textFieldCidade.setEditable(false);
 		textFieldCidade.setColumns(10);
 
-		JLabel lblTelefone = new JLabel("*Telefone: ");
+		JLabel lblTelefone = new JLabel("Telefone: ");
 		lblTelefone.setBounds(10, 232, 74, 14);
 		panelDados.add(lblTelefone);
 

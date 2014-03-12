@@ -76,7 +76,7 @@ public class vendaDAO {
 			while (set.next()) {
 				
 				venda = new Venda(set.getInt("id"),set.getInt("id_cliente"), set.getString("produto"),
-						set.getDouble("valor"), set.getString("descricao"), set.getString("data"));
+						set.getDouble("valor"), set.getString("descricao"), set.getString("data"), set.getInt("status"));
 				
 				lista.add(venda);
 			}
