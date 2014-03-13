@@ -58,7 +58,7 @@ CREATE TABLE cliente (
     nascimento date,
     rg character varying(20),
     cpf character(14),
-    telefone character(14),
+    telefone character(15),
     celular character(15),
     rua character varying(20),
     numrua character varying(10),
