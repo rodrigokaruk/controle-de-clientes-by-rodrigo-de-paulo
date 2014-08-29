@@ -21,7 +21,7 @@ public class TelaSobre extends JDialog {
 		Label label = new Label("      Rodrigo de Paulo Sampaio Barros");
 		getContentPane().add(label);
 		
-		JLabel lblDivulgador = new JLabel("  Divulgador:");
+		JLabel lblDivulgador = new JLabel("  Apoio:");
 		getContentPane().add(lblDivulgador);
 		
 		JLabel lblGleydsonHudson = new JLabel("     Gleydson Hudson.");

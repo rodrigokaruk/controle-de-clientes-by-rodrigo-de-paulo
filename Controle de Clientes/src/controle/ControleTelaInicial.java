@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.crypto.ExemptionMechanismException;
 import javax.swing.JOptionPane;
 
 import visao.TelaInicial;
@@ -35,11 +36,15 @@ public class ControleTelaInicial implements ActionListener{
 		}
 		
 		if(evt.getSource() == ti.getBtnContCli() || evt.getSource() == ti.getMntmCliente()){
+			try{
 			new TelaCadastroCliente().setVisible(true);
+			}catch(Exception e){
+				JOptionPane.showMessageDialog(null, "Erro na Conexão com Banco de dados.\n\nVerifique a senha em \"Configurações\" ou reinicie para que seja salvo \nas alterações!");
+			}
 		}
 		
 		if(evt.getSource() == ti.getBtnVendas() || evt.getSource() == ti.getMntmVendas()){
-			new TelaVendas().setVisible(true);
+			new TelaVendas().setVisible(true);			
 		}
 		if(evt.getActionCommand().equals("Configuracoes") == true){
 			JOptionPane.showMessageDialog(null, "Abrirá o arquivo BDconfig.txt!\n" +

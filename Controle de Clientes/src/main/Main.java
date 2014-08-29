@@ -11,7 +11,7 @@ import visao.TelaInicial;
 public class Main {
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+			UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
 			com.jtattoo.plaf.acryl.AcrylLookAndFeel.setCurrentTheme(new Properties());
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
