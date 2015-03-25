@@ -2,7 +2,7 @@ Este Programa Cadastra Clientes e adiciona vendas a esse cliente usando simples 
 
 instalador do PostgreSQL: http://mega.co.nz/#!qIIETJoA!Qniw80x_OIDroOQloaJCfhGPC_k5iwWOv07Rla8u7LY
 
-Query(.sql): http://code.google.com/p/controle-de-clientes-by-rodrigo-de-paulo/source/browse/Controle%20de%20Clientes/ContClientBD%20Backup.sql
+Query(.sql): http://github.com/rodrigokaruk/controle-de-clientes-by-rodrigo-de-paulo/blob/master/Controle%20de%20Clientes/ContClientBD%20Backup.sql
 
 Ao Instalar deve ser configurado o usuário e a senha do banco, o padrão é usuário "postgres" e senha "postgre", e criar a database "ContClientBD" dentro do pgAdmin.
 
