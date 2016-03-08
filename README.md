@@ -12,6 +12,6 @@ Arquivo .jar: https://mega.nz/#!jIIwVbRR!NeQgWhMlxqNueS47LAHPZwG3KTd23M8HqCzkaew
 
 Imagens do projeto: 
 
-https://onedrive.live.com/redir?resid=FF2B456A8B5F5460!4898&authkey=!AAol-VkyNcgu3lI&v=3&ithint=photo%2cpng
+https://o7vfkq.bl3302.livefilestore.com/y3mU1K1l_zEN1v6s5ynSmn6If-NrfNkEXfSkv23S-R3EPRKYpTWrEZg-0YYAaruCyRcli-pTqlf1hIRzKq08ac2M9VBeiKuST-B2ic4_KEW5gmnIc0SZoMLPlEoMkWVEOjxlbo2vMtfihQ9mhuUwHe7hePvNyq0XrZL9YsNtAiQoKk/ContClient%20img1.png?psid=1
 
-https://onedrive.live.com/redir?resid=FF2B456A8B5F5460!4899&authkey=!AIRlqOORfv0_8Bo&v=3&ithint=photo%2cpng
+https://plvfkq.bl3302.livefilestore.com/y3mlVlnMh6wMUxc4YJ_VPAJfRbFwhuyZgD8HQZkdK4--pHoiXY3hD9gCYz_4FyDLsKIOEGySmmXdim1WdDas1FsorDzz4JzZ9fCzR7nzJXQMfk4n8hghS_ReRa6-y37OzbHeYSAlw5mDlwlSV8YL6mp0y9mDf3m4_Y_rCmShq2CWO4/ContClient%20img6.png?psid=1
